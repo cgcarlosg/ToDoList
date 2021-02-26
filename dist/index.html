@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <link rel="stylesheet" href="style.css">
     <title>ToDo List</title>
   </head>
   <body>
@@ -17,7 +17,8 @@
                      <form>
                          <input type="Text" class="inputForm" id="myInput" placeholder="Write a project's name">
                          <button class= "addProject">Add Project</button>
-                         <button class= "deleteProject">Delete</button>
+                         <button class= "btnTask">Delete</button>
+                         <button onclick="toogle_div_fun('sectiontohide');">Click here to toggle visibility</button>
                      </form>
                 
                      <table id="table">
@@ -29,13 +30,12 @@
                         </thead>
                         <tbody id="proj-list"></tbody>
                      </table>
-               
-             
         </div>
         </sidebar>
 
-        <div class="tasks">
+        <div id="tasks">
             <h2>TASKS</h2>
+            <div id='sectiontohide'>
             <ul>
                 <li>
                     <form>
@@ -53,6 +53,7 @@
                     </form>
                 </li>
             </ul>
+        </div>
         </div>
     </main>
 

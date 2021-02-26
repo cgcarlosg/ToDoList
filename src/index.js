@@ -1,7 +1,5 @@
 const addButton = document.querySelector('.addProject');
-const delButton = document.querySelector('.deleteProject');
-// const inputValue = document.getElementById("myInput").value;
-
+const delButton = document.querySelector('.btnTask');
 
 addButton.addEventListener('click', function(e) {
     const inputValue = document.getElementById("myInput").value;
@@ -16,9 +14,20 @@ addButton.addEventListener('click', function(e) {
     e.preventDefault();
 })
 
+delButton.addEventListener('click', openForm);
 
 
+function openForm() {
+  dispTask.classList.add();
+}
 
-delButton.addEventListener('click', function(){
-    
-})
+function toogle_div_fun(id) {
+  let divelement = document.getElementById(id);
+
+  if(divelement.style.display == 'none')
+  divelement.style.display = 'block';
+  else
+  divelement.style.display = 'none';
+}
+
+
