@@ -15,7 +15,7 @@
   \**********************/
 /***/ (() => {
 
-eval("\n\n//# sourceURL=webpack://todolist/./src/index.js?");
+eval("const projectButton = document.getElementsByClassName(\".addProject\");\r\n\r\nprojectButton.addEventListener('click', () => {console.log(something)}\r\n\r\n)\n\n//# sourceURL=webpack://todolist/./src/index.js?");
 
 /***/ })
 
