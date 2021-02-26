@@ -15,7 +15,7 @@
   \**********************/
 /***/ (() => {
 
-eval("const projectButton = document.getElementsByClassName(\".addProject\");\r\n\r\nprojectButton.addEventListener('click', () => {console.log(something)}\r\n\r\n)\n\n//# sourceURL=webpack://todolist/./src/index.js?");
+eval("const addButton = document.querySelector('.addProject');\r\nconst delButton = document.querySelector('.deleteProject');\r\n// const inputValue = document.getElementById(\"myInput\").value;\r\n\r\n\r\n\r\naddButton.addEventListener('click', function() {\r\n    const inputValue = document.getElementById(\"myInput\").value;\r\n     alert(inputValue)\r\n    \r\n})\r\n\r\ndelButton.addEventListener('click', function(){\r\n    \r\n})\r\n\r\n\r\n\n\n//# sourceURL=webpack://todolist/./src/index.js?");
 
 /***/ })
 
