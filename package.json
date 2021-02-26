@@ -1,0 +1,24 @@
+{
+  "name": "todolist",
+  "version": "1.0.0",
+  "description": "Microverse Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cgcarlosg/ToDoList.git"
+  },
+  "author": "Carlos Gutierrez - Mir Rawshan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cgcarlosg/ToDoList/issues"
+  },
+  "homepage": "https://github.com/cgcarlosg/ToDoList#readme",
+  "devDependencies": {
+    "webpack": "^5.24.2",
+    "webpack-cli": "^4.5.0"
+  }
+}
