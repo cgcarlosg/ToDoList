@@ -32,29 +32,42 @@
                      </table>
         </div>
         </sidebar>
-
-        <div id="tasks">
-            <h2>TASKS</h2>
-            <div id='sectiontohide'>
-            <ul>
-                <li>
-                    <form>
-                        <input type="Text" class="title" placeholder="title">
-                        <input type="Text" class="description" placeholder="Describe your task">
-                        <input type="date" class="duedate" placeholder="Due Date">
-                        <select type="select" class="priority">
-                            <option value="Low">Low</option>
-                            <option value="Medium">Medium</option>
-                            <option value="High">High</option>
-                        </select>
-                        <button class= "addProject">Add Task</button>
-                        <button class= "editProject">Edit</button>
-                        <button class= "deleteProject">Delete</button>
-                    </form>
-                </li>
-            </ul>
-        </div>
-        </div>
+        <div id="modal">
+            <div class="container">
+              <h2>New Task</h2>
+              <div class="close">+</div>
+              <form data-new-task-form>
+                <label for="name">Task name:</label><br />
+                <input
+                  type="text"
+                  id="name"
+                  data-new-task-input
+                  placeholder="Task name"
+                  ariel-label="Add new task item"
+                  autocomplete="off"
+                  required
+                /><br />
+                <label for="due-date">Due date:</label>
+                <input type="date" id="due-date" name="due-date" /><br />
+                <label for="priority">Priority:</label><br />
+                <select name="priority" id="priority">
+                  <option value="Low">Low</option>
+                  <option value="Medium">Medium</option>
+                  <option value="High">High</option></select
+                ><br />
+                <label for="description">Description:</label><br />
+                <textarea
+                  name="description"
+                  id="description"
+                  cols="30"
+                  rows="6"
+                ></textarea
+                ><br />
+                <input type="submit" />
+              </form>
+            </div>
+          </div>
+        
     </main>
 
     </div>
