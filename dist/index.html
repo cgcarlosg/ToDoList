@@ -4,6 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="style.css">
+    <script
+    src="https://use.fontawesome.com/releases/v5.15.1/js/all.js"
+    data-auto-a11y="true"
+  ></script>
     <title>ToDo List</title>
   </head>
   <body>
@@ -32,6 +36,29 @@
                      </table>
         </div>
         </sidebar>
+        <div id="todos" data-list-display-container>
+            <div class="todo-lister">
+              <div class="todo-header">
+                <h2 data-list-title></h2>
+                <p data-list-count><span></span></p>
+              </div>
+              <div class="todo-list" data-tasks></div>
+              <div class="below-todo">
+                <div class="btns">
+                  <button class="add-btn">
+                    <i class="fas fa-plus"></i>
+                  </button>
+                  <button
+                    class="clear-btn"
+                    id="clear-btn"
+                    data-clear-complete-tasks-button
+                  >
+                    Clear completed tasks <i class="far fa-times-circle"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         <div id="modal">
             <div class="container">
               <h2>New Task</h2>
@@ -67,6 +94,7 @@
               </form>
             </div>
           </div>
+          <div id="overlay"></div>
         
     </main>
 

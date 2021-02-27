@@ -6,6 +6,7 @@
   transform: translate(-50%, -50%);
   width: 35rem;
   z-index: 3;
+  
 }
 
 .container {
@@ -16,4 +17,21 @@
   padding: 1.5rem;
   transform: scale(0);
   transition: 0.5s ease;
+  background-color: aqua;
+}
+
+#overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  pointer-events: none;
+  opacity: 0;
+  transition: 0.5s ease;
+}
+
+.close {
+  position: absolute;
 }
