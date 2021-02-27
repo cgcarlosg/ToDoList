@@ -34,4 +34,26 @@
 
 .close {
   position: absolute;
+  top:0.2rem;
+  right: 1rem;
+  font-size: 3.5rem;
+  cursor: pointer;
+  transform: rotate(45deg);
+  transition: 0.3s ease;
+  color: blue;
+
+}
+.add-btn {
+  background: transparent;
+  outline: none;
+  border: none;
+  font-size: 1.4rem;
+  border: blue;
+  border-radius: 50%;
+  height: 4rem;
+  width: 4rem;
+  color: violet;
+  font-weight: bolder;
+  cursor: pointer;
+  transition: 0.3s ease;
 }

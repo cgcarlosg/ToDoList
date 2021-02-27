@@ -4,6 +4,7 @@ let modalOpen = false;
 const formContainer = document.querySelector(".container");
 const overlay = document.querySelector("#overlay");
 const closeButton = document.querySelector(".close");
+const addToDoButton = document.querySelector(".add-btn");
 
 addButton.addEventListener('click', function(e) {
     const inputValue = document.getElementById("myInput").value;
@@ -41,17 +42,17 @@ function openOrCloseAddTaskForm() {
 
   
 }
-delButton.addEventListener("click", (e) => {
+addToDoButton.addEventListener("click", (e) => {
   // newTaskForm.reset();
   e.preventDefault();
   openOrCloseAddTaskForm();
 
   if (modalOpen) {
-    delButton.style.background = "#2185d5";
-    delButton.style.transform = "rotate(45deg)";
+    addToDoButton.style.background = "#2185d5";
+    addToDoButton.style.transform = "rotate(45deg)";
   } else {
-    delButton.style.background = "transparent";
-    delButton.style.transform = "rotate(0)";
+    addToDoButton.style.background = "transparent";
+    addToDoButton.style.transform = "rotate(0)";
   }
 });
 
@@ -63,8 +64,8 @@ function modalClose(){
 
 closeButton.addEventListener('click', () => {
   modalClose();
-  delButton.style.background = 'transparent';
-  delButton.style.transform = 'rotate(0)';
+  addToDoButton.style.background = 'transparent';
+  addToDoButton.style.transform = 'rotate(0)';
   modalOpen = false;
 })
 
