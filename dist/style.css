@@ -1,0 +1,19 @@
+#modal {
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 35rem;
+  z-index: 3;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  transform: scale(0);
+  transition: 0.5s ease;
+}
