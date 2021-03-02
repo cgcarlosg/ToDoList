@@ -5,6 +5,11 @@ const formContainer = document.querySelector(".container");
 const overlay = document.querySelector("#overlay");
 const closeButton = document.querySelector(".close");
 const addToDoButton = document.querySelector(".add-btn");
+const submitbtn = document.getElementById('submitbtn');
+const taskname = document.getElementById('name');
+const dueDate = document.getElementById('due-date');
+const priority = document.getElementById('priority');
+const description = document.getElementById('description');
 
 addButton.addEventListener('click', function(e) {
     const inputValue = document.getElementById("myInput").value;
@@ -67,6 +72,16 @@ closeButton.addEventListener('click', () => {
   addToDoButton.style.background = 'transparent';
   addToDoButton.style.transform = 'rotate(0)';
   modalOpen = false;
+})
+
+submitbtn.addEventListener('click', function(e){
+  e.preventDefault();
+  
+  console.log(taskname.value)
+  console.log(dueDate.value)
+  console.log(description.value)
+  console.log(taskname.value)
+
 })
 
 
