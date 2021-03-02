@@ -16,5 +16,31 @@ ul {
 }
 
 button {
-  font-size: 2rem;
+  font-size: 1.6rem;
+  cursor: pointer;
+  border-radius: 10%;
+  display: inline;
+  background-color: chartreuse;
+  font-weight: bold;
+  color: blue;
+  text-align: center;
+  padding: 0.5rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+button:hover,
+button:focus {
+    filter: brightness(120%);
+    box-shadow: 4px 2px 5px #000;
+}
+
+.container{
+  position: relative;
+  display: grid;
+  margin-top: 3rem;
+}
+
+.invisible {
+  position: absolute;
+  display: none;
 }
