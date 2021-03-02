@@ -60,6 +60,17 @@
                     Clear completed tasks <i class="far fa-times-circle"></i>
                   </button>
                 </div>
+
+                <table id="table_tasks">
+                  <thead>
+                    <tr>
+                    <th>Task Name</th>
+                    <th>Date</th>
+                    </tr>
+                  </thead>
+                  <tbody id="task-list"></tbody>
+                </table>
+
               </div>
             </div>
           </div>
@@ -81,6 +92,9 @@
                   /><br />
                   <label for="due-date">Due date:</label>
                   <input type="date" id="due-date" name="due-date" /><br />
+
+
+                  
                   <label for="priority">Priority:</label><br />
                   <select name="priority" id="priority">
                   <option value="Low">Low</option>

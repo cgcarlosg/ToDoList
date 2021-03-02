@@ -22,7 +22,8 @@
   text-align: center;
 }
 
-#table {
+#table,
+#table_tasks {
   margin-top: 20px;
   width: 100%;
   text-align: center;

@@ -7,7 +7,7 @@ const closeButton = document.querySelector(".close");
 const addToDoButton = document.querySelector(".add-btn");
 const submitbtn = document.getElementById('submitbtn');
 const taskname = document.getElementById('name');
-const dueDate = document.getElementById('due-date');
+
 const priority = document.getElementById('priority');
 const description = document.getElementById('description');
 
@@ -84,4 +84,20 @@ submitbtn.addEventListener('click', function(e){
 
 })
 
+// tasks list
 
+submitbtn.addEventListener('click', function(e) {
+  const taskName = document.getElementById("name").value;
+  const dueDate = document.getElementById('due-date').value;
+
+  const list = document.getElementById('task-list');
+  const row = document.createElement('tr')
+  row.innerHTML = `
+    <td><h3> ${taskName} </h3></td>
+    <td> ${dueDate} </td>`;
+  list.appendChild(row);
+  document.getElementById('name').value = '';
+  document.getElementById('due-date').value = '';
+ 
+  e.preventDefault();
+})
