@@ -11,32 +11,36 @@
     <title>ToDo List</title>
   </head>
   <body>
-    <header class="header"> 
+    
+      <header class="header"> 
         <h1>TODO LIST</h1>
-    </header>
-    <main class="main">
-        <sidebar class="sidebar">
-         <div>
+      </header>
+    
+      <main class="main">
+        
+        <div class="div-sidebar">
              <h2>MY PROJECTS</h2>
-                     <form>
-                         <input type="Text" class="inputForm" id="myInput" placeholder="Write a project's name">
-                         <button class= "addProject">Add Project</button>
-                         <button class= "btnTask">Delete</button>
-                        
-                     </form>
+              
+             <form>
+                <input type="Text" class="inputForm" id="myInput" placeholder="Write a project's name">
+                <button class= "addProject">Add Project</button>
+                <button class= "btnTask">Delete</button>
+              </form>
                 
-                     <table id="table">
-                        <thead>
-                            <tr>
-                                <th>Project Name</th>
-                                <th>Delete</th>
-                            </tr>
-                        </thead>
-                        <tbody id="proj-list"></tbody>
-                     </table>
+              <table id="table">
+                <thead>
+                  <tr>
+                  <th>Project Name</th>
+                  <th>Delete</th>
+                  </tr>
+                </thead>
+                <tbody id="proj-list"></tbody>
+              </table>
         </div>
-        </sidebar>
-        <div id="todos" data-list-display-container>
+      
+
+        <div class="right-content">
+          <div id="todos" data-list-display-container>
             <div class="todo-lister">
               <div class="todo-header">
                 <h2 data-list-title></h2>
@@ -59,46 +63,48 @@
               </div>
             </div>
           </div>
-        <div id="modal">
+
+          <div id="modal">
             <div class="container">
               <h2>New Task</h2>
               <div class="close">+</div>
-              <form data-new-task-form>
-                <label for="name">Task name:</label><br />
-                <input
-                  type="text"
-                  id="name"
-                  data-new-task-input
-                  placeholder="Task name"
-                  ariel-label="Add new task item"
-                  autocomplete="off"
-                  required
-                /><br />
-                <label for="due-date">Due date:</label>
-                <input type="date" id="due-date" name="due-date" /><br />
-                <label for="priority">Priority:</label><br />
-                <select name="priority" id="priority">
+                <form data-new-task-form>
+                  <label for="name">Task name:</label><br />
+                  <input
+                    type="text"
+                    id="name"
+                    data-new-task-input
+                    placeholder="Task name"
+                    ariel-label="Add new task item"
+                    autocomplete="off"
+                    required
+                  /><br />
+                  <label for="due-date">Due date:</label>
+                  <input type="date" id="due-date" name="due-date" /><br />
+                  <label for="priority">Priority:</label><br />
+                  <select name="priority" id="priority">
                   <option value="Low">Low</option>
                   <option value="Medium">Medium</option>
                   <option value="High">High</option></select
-                ><br />
-                <label for="description">Description:</label><br />
-                <textarea
-                  name="description"
-                  id="description"
-                  cols="30"
-                  rows="6"
-                ></textarea
-                ><br />
-                <input type="submit" />
-              </form>
+                  ><br />
+                  <label for="description">Description:</label><br />
+                  <textarea
+                    name="description"
+                    id="description"
+                    cols="30"
+                    rows="6"
+                  ></textarea
+                  ><br />
+                  <input type="submit" />
+                </form>
+              </div>  
             </div>
           </div>
           <div id="overlay"></div>
-        
-    </main>
-
-    </div>
+        </div>
+      </main>
+     
+   
     <script src="main.js"></script>
   </body>
 </html>
