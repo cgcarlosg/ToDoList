@@ -1,41 +1,35 @@
 :root{
-  --header: lightseagreen;
-  --headerText: rgb(229, 226, 226);
-  --sidebar: rgb(205, 227, 36);
+  --header: rgb(48, 65, 221);
+  --headerText: rgb(73, 61, 61);
+  --sidebar: rgb(20, 156, 129);
   --sidebarText: rgb(34, 33, 33);
-  --tasklist: rgb(191, 68, 202);
+  --tasklist: rgb(235, 223, 49);
   --cancelRed: rgb(231, 18, 82);
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+body{
+  margin: 0%;
+  height:100%;
+  font-family: 'Josefin Sans', sans-serif;
+ 
 }
 
-body {
-  background-color: lightpink;
-  height: 100%;
-  font-family: 'Courier New', Courier, monospace;
-}
-
-header {
-  font-size: 3rem;
-  font-weight: bold;
-  background-color: var(--header);
-  text-align: center;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+header{
   color: var(--headerText);
-  box-shadow: 20px 20px 20px blanchedalmond;
+  background-color: var(--header);
+  font-weight: 500;
+  font-size: 3.3em;
+  padding: 24px 0px 20px 60px;
+  box-shadow: 20px 20px 20px black;
+  text-align: center;
 }
 
-main {
+main{
   display: flex;
   min-height: calc(100vh);
 }
 
-#sidebar {
+#sidebar{
   flex-grow: 1;
   max-width: 200px;
   min-width: 150px;
@@ -45,250 +39,249 @@ main {
   flex-direction: column;
   padding: 20px 20px 20px 20px;
 }
+  .sidebar-buttons{
+      display: flex;
+      flex-direction: column
+  }
+  .sidebar-button{
+      background-color: var(--sidebar);
+      border: none;
+      outline: none;
+      font-size: 1.3em;
+      font-family: Arial, Helvetica, sans-serif;
+      padding: 7px;
+      margin: 3px 0px;
+      border-radius: 5px;
+      transition: ease-in .15s;
+      display: flex;
+      justify-content: space-between;
+      cursor: pointer;
+  }
+  .projects-title{
+      text-align: start;
+      font-size: 1.8em;
+      margin: 30px 0px 5px 0px
+  }
+  .project-input-container{
+      width: 80%;
+      margin: 0px auto;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+  }
+      .project-input{
+          background-color: var(--tasklist);
+          padding: 5px;
+          border-radius: 50px;
+          background-color: inherit;
+          border: none;
+          outline: none;
+          width: inherit;
+          font-size: 1.5em;
+          font-family: 'Josefin Sans', sans-serif;
+          text-align: center;
+          margin: auto;
+      }
+      #add-project-input-button{
+          background-color: inherit;
+          border: none;
+          outline: none;
+          font-size: 2em;
+          font-family: 'Josefin Sans', sans-serif;
+      }
+      .add-proj-button-container{
+          display: flex;
+          justify-content: space-around;
+          margin: auto;
+      }
+          .add-proj-button, .cancel-proj-button{
+              background-color: var(--tasklist);
+              padding: 5px;
+              border-radius: 50px;
+              background-color: inherit;
+              border: none;
+              outline: none;
+              width: inherit;
+              font-size: 1em;
+              font-family: 'Josefin Sans', sans-serif;
+              text-align: center;
+              transition: ease-in .15s;
+          }
+              .add-proj-button:hover{
+                  color: green;
+              }
+              .cancel-proj-button:hover{
+                  color: var(--cancelRed);
+              }
 
-.sidebar-btns {
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-}
-
-.sidebar-btn {
-  background-color: var(--sidebar);
-  border: none;
-  outline: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  font-family: Arial, Helvetica, sans-serif;
-  padding: 7px;
-  margin: 3px 0;
-  border-radius: 5px;
-  transition: ease-in .15s;
-  display: flex;
-  justify-content: space-between;
-}
-
-.projects-title {
-  text-align: start;
-  font-size: 1.8em;
-  font-weight: bold;
-  margin: 30px 0px 5px 0px;
-}
-
-#add-project-btn {
-  background-color: inherit;
-  border: none;
-  cursor: pointer;
-  font-size: 1.5rem;
-}
-
-.add-proj-button-container{
-  display: flex;
-  justify-content: space-around;
-  margin: auto;
-}
-
-.add-proj-button, .cancel-proj-button{
+#tasklist-container{
   background-color: var(--tasklist);
-  padding: 5px;
-  border-radius: 50px;
-  background-color: inherit;
-  border: none;
-  outline: none;
-  width: inherit;
-  font-size: 1em;
-  font-family: 'Josefin Sans', sans-serif;
-  text-align: center;
-  transition: ease-in .15s;
-}
-
-.add-proj-button:hover{
-  color: green;
-}
-.cancel-proj-button:hover{
-  color: var(--cancelRed);
-}
-
-#task-container {
   flex-grow: 3;
   padding: 15px 30px 30px 50px;
 }
-
-#project-name {
-  padding: 0 1rem;
-  margin-bottom: 1rem;
-}
-
-.input-container {
-  background-color: var(--tasklist);
-  padding: 10px;
-  width: 80%;
-  display: flex;
-  align-items: center;
-}
-
-.task-header-container {
-  background-color: salmon;
- max-width: 900px;
- width: 100%;
- display: flex;
- justify-content: space-between;
- padding-bottom: 3px;
- border-bottom: solid 3px var(--tasklist);
-}
-
-.task-header {
-  border: none;
-  font-family: 'Josefin Sans', sans-serif;
-  font-size: 1.5rem;
-}
-
-.task-header-left{
-  text-indent: 35px;
-  font-size: 1.5rem;
-}
-.task-header-right{
-  text-indent: -207px;
-  font-size: 1.5rem;
-}
-.task-input{
-  background-color: var(--tasklist);
-  border: none;
-  outline: none;
-  font-family: 'Josefin Sans', sans-serif;
-  font-size: 2rem;
-}
-
-.edit-task-input{
-  background-color: var(--tasklist);
-  border: none;
-  outline: none;
-  padding-left: 10px;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 1.5rem;
-}
-
-.add-task-input-button{
-  background-color: var(--tasklist);
-  border: none;
-  outline: none;
-  font-size: 2rem;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  transition: ease-in .15s;
-}
-  #add-task-input-button:hover{
-      background-color: white;
+  #project-name{
+      padding: 0 1rem;
+      margin-bottom: 1rem;
   }
-
-  .task-description{
-    background-color: var(--tasklist);
-    border: none;
-    outline: none;
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 2rem;
-  }
-
-  .delete-proj-button{
-    font-family: 'Josefin Sans', sans-serif;
-    background-color: var(--tasklist);
-    color: gray;
-    border: none;
-    outline: none;
-    font-size: 1.0em;
-    transition: ease-in .15s;
-}
-    .delete-proj-button:hover{
-        color: var(--cancelRed);
-    }
-
-    .yes-button{
-      font-family: 'Josefin Sans', sans-serif;
+  .input-container{
       background-color: var(--tasklist);
-      color: var(--cancelRed);
-      border: none;
-      outline: none;
-      font-size: 1.0em;
-      transition: ease-in .15s;
+      padding: 10px;
+      width: 80%;
+      display: flex;
+      align-items: center;
   }
-  .no-button{
-      font-family: 'Josefin Sans', sans-serif;
-      background-color: var(--tasklist);
-      color: var(--sidebarText);
-      border: none;
-      outline: none;
-      font-size: 1.0em;
-      transition: ease-in .15s;
-  }
+      .task-header-container{
+          background-color: var(--tasklist);
+          max-width: 900px;
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          padding-bottom: 3px;
+          border-bottom: solid 3px var(--sidebar);
+      }
+          .task-header{
+              background-color: var(--tasklist);
+              border: none;
+              outline: none;
+              font-family: 'Josefin Sans', sans-serif;
+              font-size: 1.5rem;
+          }
+              .task-header-left{
+                  text-indent: 35px;
+                  font-size: 1.5rem;
+              }
+              .task-header-right{
+                  text-indent: -207px;
+                  font-size: 1.5rem;
+              }
+      .task-input{
+          background-color: var(--tasklist);
+          border: none;
+          outline: none;
+          font-family: 'Josefin Sans', sans-serif;
+          font-size: 2rem;
+      }
+          .edit-task-input{
+              background-color: var(--tasklist);
+              border: none;
+              outline: none;
+              padding-left: 10px;
+              font-family: Arial, Helvetica, sans-serif;
+              font-size: 1.5rem;
+          }
+      .add-task-input-button{
+          background-color: var(--tasklist);
+          border: none;
+          outline: none;
+          font-size: 2rem;
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          transition: ease-in .15s;
+      }
+          #add-task-input-button:hover{
+              background-color: white;
+          }
+      .delete-proj-button{
+          font-family: 'Josefin Sans', sans-serif;
+          background-color: var(--tasklist);
+          color: gray;
+          border: none;
+          outline: none;
+          font-size: 1.0em;
+          transition: ease-in .15s;
+      }
+          .delete-proj-button:hover{
+              color: var(--cancelRed);
+          }
+          .yes-button{
+              font-family: 'Josefin Sans', sans-serif;
+              background-color: var(--tasklist);
+              color: var(--cancelRed);
+              border: none;
+              outline: none;
+              font-size: 1.0em;
+              transition: ease-in .15s;
+          }
+          .no-button{
+              font-family: 'Josefin Sans', sans-serif;
+              background-color: var(--tasklist);
+              color: var(--sidebarText);
+              border: none;
+              outline: none;
+              font-size: 1.0em;
+              transition: ease-in .15s;
+          }
   .new-task-container{
-    width: 100%;
-    max-width: 900px;
-    display: flex;
-    justify-content: space-between;
-}
-    .task-container-left{
-        display: flex;
-    }
-    .task-container-right{
-        display: flex;
-    }
-        .task-div{
-            background-color: var(--tasklist);
-            border: none;
-            outline: none;
-            font-size: 1.5em;
-            font-family: Arial, Helvetica, sans-serif;
-            padding: 10px;
-            border-radius: 20px;
-            transition: ease-in .15s;
-            text-align: left;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-            .task-edit-button, .task-flag-button{
-                background-color: var(--tasklist);
-                color: rgb(184, 184, 184);
-                border: none;
-                outline: none;
-                font-size: 1em;
-                font-family: 'Josefin Sans', sans-serif;
-                padding: 5px;
-                border-radius: 20px;
-                transition: ease-in .15s;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-                .task-edit-button:hover{
-                    color: rgb(255, 115, 0);
-                }
-                .task-flag-button:hover{
-                    color: var(--cancelRed);
-                }
-            .task-div-check{
-                background-color: var(--tasklist);
-                border: none;
-                outline: none;
-                font-size: 1em;
-                font-family: 'Josefin Sans', sans-serif;
-                padding: 5px;
-                border-radius: 20px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                cursor: pointer;
-            }
-    .task-input{
-        background-color: var(--tasklist);
-        border: none;
-        outline: none;
-        font-size: 1.0em;
-        font-family: 'Josefin Sans', sans-serif;
-        padding: 10px;
-        border-radius: 20px;
-        transition: ease-in .15s;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+      width: 100%;
+      max-width: 900px;
+      display: flex;
+      justify-content: space-between;
+  }
+      .task-container-left{
+          display: flex;
+      }
+      .task-container-right{
+          display: flex;
+      }
+          .task-div{
+              background-color: var(--tasklist);
+              border: none;
+              outline: none;
+              font-size: 1.5em;
+              font-family: Arial, Helvetica, sans-serif;
+              padding: 10px;
+              border-radius: 20px;
+              transition: ease-in .15s;
+              text-align: left;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+          }
+              .task-edit-button, .task-flag-button{
+                  background-color: var(--tasklist);
+                  color: rgb(184, 184, 184);
+                  border: none;
+                  outline: none;
+                  font-size: 1em;
+                  font-family: 'Josefin Sans', sans-serif;
+                  padding: 5px;
+                  border-radius: 20px;
+                  transition: ease-in .15s;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+              }
+                  .task-edit-button:hover{
+                      color: rgb(255, 115, 0);
+                  }
+                  .task-flag-button:hover{
+                      color: var(--cancelRed);
+                  }
+              .task-div-check{
+                  background-color: var(--tasklist);
+                  border: none;
+                  outline: none;
+                  font-size: 1em;
+                  font-family: 'Josefin Sans', sans-serif;
+                  padding: 5px;
+                  border-radius: 20px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  cursor: pointer;
+              }
+      .task-input{
+          background-color: var(--tasklist);
+          border: none;
+          outline: none;
+          font-size: 1.0em;
+          font-family: 'Josefin Sans', sans-serif;
+          padding: 10px;
+          border-radius: 20px;
+          transition: ease-in .15s;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+      }

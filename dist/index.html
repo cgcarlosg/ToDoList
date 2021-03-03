@@ -1,70 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500;600;700&display=swap" rel="stylesheet">
-  <title>To Do </title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+    <title>to-do list</title>
 </head>
 <body>
-  <div class="header">
-    <header>
-      My Todo List
-    </header>
-  </div>
-   <main>
-     <div id="sidebar"> 
-       <div class="sidebar-btns">
-         <button class="sidebar-btn" id="all-btn" value="all"> All </button>
-       </div>
+    <div id="header-div">
+        <header>
+            My Todo List
+        </header>
+    </div>
 
-       <h2 class="prio" id="prio">Priority</h2>
-       <div class="sidebar-btns">
-         <button class="sidebar-btn" id= 'topbtn'>Top</button>  
-         <button class="sidebar-btn" id= 'norbtn'>Normal</button>  
-         <button class="sidebar-btn" id= 'lessbtn'>Less</button>  
-       </div> 
+    <main>
+        <div id="sidebar">
+            <div class="sidebar-buttons">
+                <button class="sidebar-button" id="All-button" value="All">All</button>
+            </div>
 
-       <h2 class="projects-title" id="project-title">Projects</h2>
-       <div class="sidebar-btns" id="projects-btn">
+            <h2 class="projects-title">Priority</h2>
+            <div class="sidebar-buttons">
+                <button class="sidebar-button" id="Today-button" value="Today">Top</button>
+                <button class="sidebar-button" id="Urgent-button" value="Urgent">Normal</button>
+                <button class="sidebar-button" id="Urgent-button" value="Urgent">Less</button>
+            </div>
 
-       </div>
-       <button id="add-project-btn">+</button>
+            <h2 class="projects-title">Projects</h2>
+            <div class="sidebar-buttons" id="projects-buttons">
 
-     </div>
-     <div id="task-container">
-       <h1 id="project-name">All</h1>
-       <div id="tasklists">
-         <div class="task-header-container">
-           <div class="task-header taske-header-left">
-             Tasks
-           </div>
-           <div class="task-header taske-header-right">
-            Do by
-          </div>
-         </div>
-         <div id="tasks">
+            </div>
+            <!-- <div class="project-input-container">
+                <input class="project-input" id="button-input" type="text" placeholder="add project">
+            </div> -->
+            <button id="add-project-input-button" >+</button>
+        </div>
 
-         </div>
-         <div class="input-container" id="input-container">
-          <input class="task-input" id="task-input" type="text" placeholder="add task">
-          <input class="task-description" id="task-desk" type="text" placeholder="add descriprion">
-          <button class="add-task-input-button" id="add-task-input-button" >+</button>
-          <button class="add-task-input-button" id="add-proj-task-input-button">+</button>
-          <button class="delete-proj-button" id="delete-proj-button">delete project</button>
-      </div>
+        <div id="tasklist-container">
+            <h1 id="project-name">All</h1>
+            <div id="tasklist">
+                <div class="task-header-container">
+                    <div class="task-header task-header-left">
+                        Tasks
+                    </div>
+                    <div class="task-header task-header-right">
+                        Do by
+                    </div>
+                </div>
+                <div id="tasks">
 
-       </div>
-
-     </div>
-     
-
-   </main>
-
-  
-
-  <script src="main.js"></script>
+                </div>
+                <div class="input-container" id="input-container">
+                    <input class="task-input" id="task-input" type="text" placeholder="add task">
+                    <button class="add-task-input-button" id="add-task-input-button" >+</button>
+                    <button class="add-task-input-button" id="add-proj-task-input-button">+</button>
+                    <button class="delete-proj-button" id="delete-proj-button">delete project</button>
+                </div>
+            </div>
+        </div>
+    </main>
 </body>
+<script src="main.js"></script>
 </html>
