@@ -1,6 +1,7 @@
 const allButton = document.querySelector("#All-button");
-const todayButton = document.querySelector("#Today-button");
-const urgentButton = document.querySelector("#Urgent-button");
+const todayButton = document.querySelector("#top-btn");
+const urgentButton = document.querySelector("#normal-btn");
+const lessButton = document.querySelector("#less-btn");
 const titleTask = document.querySelector("#project-name");
 const taskInputContainer = document.querySelector("#input-container");
 const taskInput = document.querySelector("#task-input");
@@ -17,6 +18,7 @@ deleteProjectButton.style.display = "none";
 allButton.addEventListener("click", switchList);
 todayButton.addEventListener("click", switchList);
 urgentButton.addEventListener("click", switchList);
+lessButton.addEventListener('click', switchList)
 newProjectButton.addEventListener("click", addNewProject);
 
 let allTasks = [];
@@ -29,8 +31,7 @@ let projID = 1;
 // task factory
 const task = () => {
     if (taskInput.value.length < 1){
-        alert("task is empty, add text")
-        return
+        return false;
     }
     let name = taskInput.value;
     let id = taskID
@@ -197,19 +198,25 @@ function switchList(e){
         taskButton.style.removeProperty("display");
         projTaskButton.style.display = "none";
         deleteProjectButton.style.display = "none";
-    } else if (currentList == "Today"){
+    } else if (currentList == "top"){
         populateList(todaysTasks);
         changeButton(currentList);
         taskButton.style.removeProperty("display");
         projTaskButton.style.display = "none";
         deleteProjectButton.style.display = "none";
-    } else if (currentList == "Urgent"){
+    } else if (currentList == "normal"){
         populateList(urgentTasks);
         changeButton(currentList);
         taskButton.style.removeProperty("display");
         projTaskButton.style.display = "none";
         deleteProjectButton.style.display = "none";
     }
+    else if (currentList == "less"){
+        populateList(todaysTasks);
+        changeButton(currentList);
+        taskButton.style.removeProperty("display");
+        projTaskButton.style.display = "none";
+        deleteProjectButton.style.display = "none";
 }
 
 // populate lists

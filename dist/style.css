@@ -57,6 +57,11 @@ main{
       justify-content: space-between;
       cursor: pointer;
   }
+
+  #top-btn {
+    display: flex;
+    flex-direction: column;
+  }
   .projects-title{
       text-align: start;
       font-size: 1.8em;
@@ -218,6 +223,7 @@ main{
       max-width: 900px;
       display: flex;
       justify-content: space-between;
+     
   }
       .task-container-left{
           display: flex;
@@ -227,8 +233,6 @@ main{
       }
           .task-div{
               background-color: var(--tasklist);
-              border: none;
-              outline: none;
               font-size: 1.5em;
               font-family: Arial, Helvetica, sans-serif;
               padding: 10px;
