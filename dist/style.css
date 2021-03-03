@@ -1,46 +1,64 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+:root{
+  --header: lightseagreen;
+  --headerText: rgb(229, 226, 226);
+  --sidebar: rgb(205, 227, 36);
+  --sidebarText: rgb(34, 33, 33);
+  --tasklist: rgb(226, 229, 229);
+  --cancelRed: rgb(231, 18, 82);
+}
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
-  background-color: burlywood;
+  background-color: lightpink;
+  height: 100%;
+  font-family: 'Courier New', Courier, monospace;
 }
 
-ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-button {
-  font-size: 1.6rem;
-  cursor: pointer;
-  border-radius: 10%;
-  display: inline;
-  background-color: chartreuse;
+header {
+  font-size: 3rem;
   font-weight: bold;
-  color: blue;
+  background-color: var(--header);
   text-align: center;
-  padding: 0.5rem;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  color: var(--headerText);
+  box-shadow: 20px 20px 20px blanchedalmond;
 }
 
-button:hover,
-button:focus {
-    filter: brightness(120%);
-    box-shadow: 4px 2px 5px #000;
+main {
+  display: flex;
+  min-height: calc(100vh);
 }
 
-.container{
-  position: relative;
-  display: grid;
-  margin-top: 3rem;
+#sidebar {
+  flex-grow: 1;
+  max-width: 200px;
+  min-width: 150px;
+  background-color: var(--sidebar);
+  color: var(--sidebarText);
+  display: flex;
+  flex-direction: column;
+  padding: 20px 20px 20px 20px;
 }
 
-.invisible {
-  position: absolute;
-  display: none;
+.sidebar-btns {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-btn {
+  background-color: var(--sidebar);
+  border: none;
+  outline: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 7px;
+  margin: 3px 0;
 }
