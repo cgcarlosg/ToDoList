@@ -15,7 +15,7 @@
   \**********************/
 /***/ (() => {
 
-eval("\n\n//# sourceURL=webpack://todolist/./src/index.js?");
+eval("const allButton = document.querySelector(\"#all-btn\");\r\nconst topButton = document.querySelector(\"#topbtn\");\r\nconst norButton = document.querySelector(\"#norbtn\");\r\nconst lessButton = document.querySelector(\"#lessbtn\");\r\nconst titleTask = document.querySelector(\"#project-name\");\r\nconst taskInputContainer = document.querySelector(\"#input-container\");\r\nconst taskInput = document.querySelector(\"#task-input\");\r\nconst taskButton = document.querySelector(\"#add-task-input-button\");\r\nconst projTaskButton = document.querySelector(\"#add-proj-task-input-button\");\r\nconst deleteProjectButton = document.querySelector(\"#delete-proj-button\");\r\nconst sidebarDiv = document.querySelector(\"#sidebar\");\r\nconst tasksDiv = document.querySelector(\"#tasks\");\r\nconst projectButtons = document.querySelector(\"#projects-btn\");\r\nconst newProjectButton = document.querySelector(\"#add-project-btn\");\r\n\r\nallButton.addEventListener('click', function(e){\r\n  e.preventDefault;\r\n    console.log(\"clicked\");\r\n\r\n})\n\n//# sourceURL=webpack://todolist/./src/index.js?");
 
 /***/ })
 
