@@ -1,83 +1,117 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="./images/favicon.ico" />
+    <link rel="stylesheet" href="stylesheet.css" />
     <script
-    src="https://use.fontawesome.com/releases/v5.15.1/js/all.js"
-    data-auto-a11y="true"
-  ></script>
-    <title>ToDo List</title>
+      src="https://use.fontawesome.com/releases/v5.15.1/js/all.js"
+      data-auto-a11y="true"
+    ></script>
+    <script src="main.js" defer></script>
+    <title>Todo List</title>
   </head>
-    <body>
+  <body>
+    <div id="menu">
+      <div class="hamburger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </div> 
+      
+    </div>
 
-      <div id="header-div">
-        <header>TODO LIST</header>      
+    <section id="main">
+      <div id="sidebar">
+        <h2>My Todo List</h2>
+        <div class="task-list">
+          <h3><i class="far fa-folder-open"></i> My Tasks</h3>
+
+
+          <ul data-lists></ul>
+          <form data-new-list-form>
+            <input type="text" class="new-list" data-new-list-input  placeholder="Add a new list" aria-label="Add a new list"/>
+            <i class="fas fa-arrow-up" id="up-arrow"></i>
+          </form>
+          <button class="delete-btn" id="delete-btn" data-delete-list-button>
+            Delete <i class="far fa-trash-alt"></i>
+          </button>
+        </div>
       </div>
 
-      <section id="main">
-        <div id="sidebar">
-          <h2>My Todo List</h2>
-          <div class="task-list">
-            <h3><i class="far fa-folder-open"></i> My Tasks</h3>
-            <ul data-lists></ul>
-            <form data-new-list-form>
-              <input
-                type="text"
-                class="new-list"
-                data-new-list-input
-                placeholder="ADD A PROJECT"
-                aria-label="ADD A PROJECT"
-              />
-              <i class="fas fa-arrow-up" id="up-arrow"></i>
-            </form>
-            <button class="delete-btn" id="delete-btn" data-delete-list-button>
-              Delete <i class="far fa-trash-alt"></i>
-            </button>
+      <div id="todos" data-list-display-container>
+        <div class="todo-lister">
+          <div class="todo-header">
+            <h2 data-list-title></h2>
+            <p data-list-count><span></span></p>
+          </div>
+          <div class="todo-list" data-tasks></div>
+          <div class="below-todo">
+            <div class="btns">
+              <button class="add-btn">
+                <i class="fas fa-plus"></i>
+              </button>
+              <button
+                class="clear-btn"
+                id="clear-btn"
+                data-clear-complete-tasks-button
+              >
+                Clear completed tasks <i class="far fa-times-circle"></i>
+              </button>
+            </div>
           </div>
         </div>
+      </div>
+    </section>
 
+    <div id="modal">
       <div class="container">
-     <button id="modal-open">Add Task</button>
-     <div id="task-modal" class="modal">
-       <div id="modal-content">
-          
-          <div id="modal-header">
-            <span class="close-modal">&times;</span>
-            <h2>New Tasks</h2>
-          </div>
-
-          <div id="modal-body">
-            <h3>This is a test of task</h3>
-            <form>
-              <div class="form-group">
-                <label for="title">Title</label>
-                <input type="text" placeholder="Enter a title">
-              </div>
-              <div class="form-group">
-                <label for="description">description</label>
-                <input type="text" placeholder="Enter a description">
-              </div>
-              <div class="form-group">
-                <label for="date">Due Date</label>
-                <input type="date">
-              </div>
-              <div class="form-group">
-                <label for="priority">Priority</label>
-                <select name="priority" id="priority">
-                  <option value="Low">Low</option>
-                  <option value="Medium">Medium</option>
-                  <option value="High">High</option>
-                </select>
-              </div>
-              <input type="submit" value="Add">
-            </form>
-          </div>
-       </div>
-     </div>
+        <h2>New Task</h2>
+        <div class="close">+</div>
+        <form data-new-task-form>
+          <label for="name">Task name:</label><br />
+          <input
+            type="text"
+            id="name"
+            data-new-task-input
+            placeholder="Task name"
+            ariel-label="Add new task item"
+            autocomplete="off"
+            required
+          /><br />
+          <label for="due-date">Due date:</label>
+          <input type="date" id="due-date" name="due-date" /><br />
+          <label for="priority">Priority:</label><br />
+          <select name="priority" id="priority">
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option></select
+          ><br />
+          <label for="description">Description:</label><br />
+          <textarea
+            name="description"
+            id="description"
+            cols="30"
+            rows="6"
+          ></textarea
+          ><br />
+          <input type="submit" />
+        </form>
+      </div>
     </div>
-   
-      <script src="main.js"></script>
-    </body>
+
+    <div id="overlay"></div>
+
+    <template id="task-template">
+      <div class="todo">
+        <div class="todo-content">
+          <div class="task">
+            <input type="checkbox" />
+            <label><span class="checkbox"></span></label>
+          </div>
+        </div>
+      </div>
+    </template>
+  </body>
 </html>

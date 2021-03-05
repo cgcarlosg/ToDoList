@@ -15,7 +15,7 @@
   \**********************/
 /***/ (() => {
 
-eval("let modal = document.getElementById('task-modal'),\r\n    openModal = document.getElementById('modal-open'),\r\n    closeModal = document.querySelector('.close-modal')\r\n\r\nopenModal.addEventListener('click', function() {\r\n    modal.style.display = 'block'\r\n});\r\n\r\ncloseModal.addEventListener('click', function() {\r\n    modal.style.display = 'none'\r\n})\r\n\n\n//# sourceURL=webpack://todolist/./src/index.js?");
+eval("\n\n//# sourceURL=webpack://todolist/./src/index.js?");
 
 /***/ })
 
