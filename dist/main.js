@@ -15,7 +15,7 @@
   \**********************/
 /***/ (() => {
 
-eval("\n\n//# sourceURL=webpack://todolist/./src/index.js?");
+eval("const listsContainer = document.querySelector('[data-lists')\r\n\r\nlet lists = ['name', 'todo']\r\n\r\nfunction render() {\r\n  clearElement(listsContainer)\r\n  lists.forEach(list => {\r\n    const listElement = document.createElement('li')\r\n    listElement.classList.add(\"list-name\")\r\n    listElement.innerHTML = list\r\n    listsContainer.appendChild(listElement)\r\n  })\r\n}\r\n\r\nfunction clearElement(element){\r\nwhile (element.firstChild) {\r\n  element.removeChild(element.firstChild)\r\n}\r\n}\r\n\r\nrender()\n\n//# sourceURL=webpack://todolist/./src/index.js?");
 
 /***/ })
 
