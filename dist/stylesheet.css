@@ -23,45 +23,26 @@ html {
 body {
   height: 92vh;
   overflow-x: hidden;
-  background: var(--darkslategray);
   color: var(--white);
   font-family: "Poppins", sans-serif;
 }
 
 /* HEADER */
+
+header{
+  color: Black;
+  font-weight: 500;
+  font-size: 3.3em;
+  padding: 24px 0px 20px 60px;
+  text-align: center;
+}
+
 #menu {
   display: flex;
   align-items: center;
   padding: 2rem;
   height: 8vh;
   width: 100%;
-  background: var(--blue);
-}
-
-/* HAMBURGER MENU */
-.hamburger {
-  cursor: pointer;
-  display: none;
-}
-
-.hamburger div {
-  background: var(--white);
-  transition: 0.5s;
-  width: 2.5rem;
-  height: 3px;
-  margin: 5px;
-}
-
-.clicked .line1 {
-  transform: rotate(45deg) translate(5px, 6px);
-}
-
-.clicked .line2 {
-  opacity: 0;
-}
-
-.clicked .line3 {
-  transform: rotate(-45deg) translate(5px, -6px);
 }
 
 #main {
