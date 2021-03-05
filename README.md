@@ -10,11 +10,11 @@
 
 ## Demo Screenshots
 
-![screenshot]()
+![screenshot](https://github.com/cgcarlosg/ToDoList/blob/Feat/dist/images/screen1.png)
 
 ## Live Demo
 
-[Live version]()
+[Live version](https://cgcarlosg.github.io/ToDoList/.)
 
 ## Prerequisites
 
