@@ -14,7 +14,7 @@
 
 ## Live Demo
 
-[Live version](https://cgcarlosg.github.io/ToDoList/.)
+[Live version](https://rawcdn.githack.com/cgcarlosg/ToDoList/2b17e9c5ae4639f0a5ce04039e98acc563922544/dist/index.html)
 
 ## Prerequisites
 
