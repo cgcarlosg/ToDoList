@@ -15,7 +15,7 @@ const newTaskPriority = document.querySelector('#priority');
 const newTaskDescription = document.querySelector('#description');
 const clearCompleteTasksButton = document.querySelector('[data-clear-complete-tasks-button]');
 
-let lists = JSON.parse(localStorage.getItem('task.lists')) || [];
+let lists = JSON.parse(localStorage.getItem('task.lists'));
 let selectedListId = localStorage.getItem('task.selectedListId');
 const overlay = document.querySelector('#overlay');
 const formContainer = document.querySelector('.container');
@@ -23,13 +23,15 @@ const closeButton = document.querySelector('.close');
 const addButton = document.querySelector('.add-btn');
 let modalOpen = false;
 
-clearElement = (element) => {
+// localStorage.clear();
+
+const clearElement = (element) => {
   while (element.firstChild) {
     element.removeChild(element.firstChild);
   }
-}
+};
 
-renderLists = () => {
+const renderLists = () => {
   lists.forEach((list) => {
     const listElement = document.createElement('li');
     listElement.innerText = list.name;
@@ -39,17 +41,17 @@ renderLists = () => {
     }
     listsContainer.appendChild(listElement);
   });
-}
+};
 
-renderTaskCount = (selectedList) => {
+const renderTaskCount = (selectedList) => {
   const incompleteTaskCount = selectedList.tasks.filter(
     (task) => !task.complete,
   ).length;
   const taskString = incompleteTaskCount === 1 ? 'task' : 'tasks';
   listCountElement.innerText = `${incompleteTaskCount} ${taskString} remaining`;
-}
+};
 
-colorTasks = (selectedList) => {
+const colorTasks = (selectedList) => {
   const todos = [...document.querySelectorAll('.todo')];
   const checkbox = [...document.querySelectorAll('.checkbox')];
   for (let i = 0; i < todos.length; i += 1) {
@@ -63,9 +65,9 @@ colorTasks = (selectedList) => {
       }
     }
   }
-}
+};
 
-openOrCloseAddTaskForm = () => {
+const openOrCloseAddTaskForm = () => {
   const h2 = document.querySelector('.container h2');
   const submitInput = document.querySelector('input[type="submit"]');
 
@@ -82,9 +84,9 @@ openOrCloseAddTaskForm = () => {
     overlay.style.opacity = 1;
     modalOpen = true;
   }
-}
+};
 
-function openOrCloseUpdateTaskForm() {
+const openOrCloseUpdateTaskForm = () => {
   const h2 = document.querySelector('.container h2');
   const submitInput = document.querySelector('input[type="submit"]');
 
@@ -101,9 +103,9 @@ function openOrCloseUpdateTaskForm() {
     overlay.style.opacity = 1;
     modalOpen = true;
   }
-}
+};
 
-renderTasks = (selectedList) => {
+const renderTasks = (selectedList) => {
   if (selectedList.tasks.length === 0) {
     listDisplayContainer.style.background = 'center no-repeat';
     listDisplayContainer.style.backgroundSize = '35%';
@@ -130,9 +132,9 @@ renderTasks = (selectedList) => {
     todoTask.append(editButton);
     tasksContainer.appendChild(taskElement);
   });
-}
+};
 
-render = () => {
+const render = () => {
   clearElement(listsContainer);
   renderLists();
   const selectedList = lists.find((list) => list.id === selectedListId);
@@ -147,16 +149,16 @@ render = () => {
     renderTasks(selectedList);
     colorTasks(selectedList);
   }
-}
+};
 
-renderAndSave = () => {
+const renderAndSave = () => {
   render();
   localStorage.setItem('task.lists', JSON.stringify(lists));
   localStorage.setItem('task.selectedListId', selectedListId);
-}
+};
 
 
-editTask = (task, label) => {
+const editTask = (task, label) => {
   openOrCloseUpdateTaskForm();
   newTaskInput.value = task.name;
   newTaskDate.value = task.date;
@@ -170,22 +172,18 @@ editTask = (task, label) => {
     label.innerHTML = `<span class="checkbox"></span>${task.name}<br>${task.date}<br>${task.description}`;
     renderAndSave();
   });
-}
+};
 
-createList = () => {
-  return { id: Date.now().toString(), name: newListInput.value, tasks: [] };
-}
+const createList = () => ({ id: Date.now().toString(), name: newListInput.value, tasks: [] });
 
-createTask = () => {
-  return {
-    id: Date.now().toString(),
-    name: newTaskInput.value,
-    date: newTaskDate.value,
-    priority: newTaskPriority.value,
-    description: newTaskDescription.value,
-    complete: false,
-  };
-}
+const createTask = () => ({
+  id: Date.now().toString(),
+  name: newTaskInput.value,
+  date: newTaskDate.value,
+  priority: newTaskPriority.value,
+  description: newTaskDescription.value,
+  complete: false,
+});
 
 newListForm.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -253,11 +251,11 @@ addButton.addEventListener('click', () => {
   }
 });
 
-closeModal = () => {
+const closeModal = () => {
   formContainer.style.transform = 'scale(0)';
   overlay.style.opacity = 0;
   modalOpen = false;
-}
+};
 
 closeButton.addEventListener('click', () => {
   closeModal();
@@ -274,3 +272,14 @@ formContainer.addEventListener('submit', (e) => {
 });
 
 render();
+
+export {
+  clearElement,
+  listsContainer,
+  renderLists,
+  listDisplayContainer,
+  listTitleElement,
+  tasksContainer,
+  taskTemplate,
+  editTask,
+};
