@@ -174,9 +174,7 @@ const editTask = (task, label) => {
   });
 };
 
-const createList = () => {
-  return { id: Date.now().toString(), name: newListInput.value, tasks: [] };
-}
+const createList = () => ({ id: Date.now().toString(), name: newListInput.value, tasks: [] });
 
 
 const createTask = () => ({
