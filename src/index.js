@@ -15,7 +15,7 @@ const newTaskPriority = document.querySelector('#priority');
 const newTaskDescription = document.querySelector('#description');
 const clearCompleteTasksButton = document.querySelector('[data-clear-complete-tasks-button]');
 
-let lists = JSON.parse(localStorage.getItem('task.lists'));
+let lists = JSON.parse(localStorage.getItem('task.lists')) || [];
 let selectedListId = localStorage.getItem('task.selectedListId');
 const overlay = document.querySelector('#overlay');
 const formContainer = document.querySelector('.container');
@@ -174,7 +174,10 @@ const editTask = (task, label) => {
   });
 };
 
-const createList = () => ({ id: Date.now().toString(), name: newListInput.value, tasks: [] });
+const createList = () => {
+  return { id: Date.now().toString(), name: newListInput.value, tasks: [] };
+}
+
 
 const createTask = () => ({
   id: Date.now().toString(),
