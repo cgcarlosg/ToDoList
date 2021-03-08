@@ -23,13 +23,13 @@ const closeButton = document.querySelector('.close');
 const addButton = document.querySelector('.add-btn');
 let modalOpen = false;
 
-function clearElement(element) {
+clearElement = (element) => {
   while (element.firstChild) {
     element.removeChild(element.firstChild);
   }
 }
 
-function renderLists() {
+renderLists = () => {
   lists.forEach((list) => {
     const listElement = document.createElement('li');
     listElement.innerText = list.name;
@@ -41,7 +41,7 @@ function renderLists() {
   });
 }
 
-function renderTaskCount(selectedList) {
+renderTaskCount = (selectedList) => {
   const incompleteTaskCount = selectedList.tasks.filter(
     (task) => !task.complete,
   ).length;
@@ -49,7 +49,7 @@ function renderTaskCount(selectedList) {
   listCountElement.innerText = `${incompleteTaskCount} ${taskString} remaining`;
 }
 
-function colorTasks(selectedList) {
+colorTasks = (selectedList) => {
   const todos = [...document.querySelectorAll('.todo')];
   const checkbox = [...document.querySelectorAll('.checkbox')];
   for (let i = 0; i < todos.length; i += 1) {
@@ -65,7 +65,7 @@ function colorTasks(selectedList) {
   }
 }
 
-function openOrCloseAddTaskForm() {
+openOrCloseAddTaskForm = () => {
   const h2 = document.querySelector('.container h2');
   const submitInput = document.querySelector('input[type="submit"]');
 
@@ -103,7 +103,7 @@ function openOrCloseUpdateTaskForm() {
   }
 }
 
-function renderTasks(selectedList) {
+renderTasks = (selectedList) => {
   if (selectedList.tasks.length === 0) {
     listDisplayContainer.style.background = 'center no-repeat';
     listDisplayContainer.style.backgroundSize = '35%';
@@ -132,7 +132,7 @@ function renderTasks(selectedList) {
   });
 }
 
-function render() {
+render = () => {
   clearElement(listsContainer);
   renderLists();
   const selectedList = lists.find((list) => list.id === selectedListId);
@@ -149,14 +149,14 @@ function render() {
   }
 }
 
-function renderAndSave() {
+renderAndSave = () => {
   render();
   localStorage.setItem('task.lists', JSON.stringify(lists));
   localStorage.setItem('task.selectedListId', selectedListId);
 }
 
 
-function editTask(task, label) {
+editTask = (task, label) => {
   openOrCloseUpdateTaskForm();
   newTaskInput.value = task.name;
   newTaskDate.value = task.date;
@@ -172,11 +172,11 @@ function editTask(task, label) {
   });
 }
 
-function createList() {
+createList = () => {
   return { id: Date.now().toString(), name: newListInput.value, tasks: [] };
 }
 
-function createTask() {
+createTask = () => {
   return {
     id: Date.now().toString(),
     name: newTaskInput.value,
@@ -253,7 +253,7 @@ addButton.addEventListener('click', () => {
   }
 });
 
-function closeModal() {
+closeModal = () => {
   formContainer.style.transform = 'scale(0)';
   overlay.style.opacity = 0;
   modalOpen = false;
@@ -274,14 +274,3 @@ formContainer.addEventListener('submit', (e) => {
 });
 
 render();
-
-export {
-  clearElement,
-  listsContainer,
-  renderLists,
-  listDisplayContainer,
-  listTitleElement,
-  tasksContainer,
-  taskTemplate,
-  editTask,
-};
