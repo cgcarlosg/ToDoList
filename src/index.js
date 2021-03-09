@@ -126,13 +126,13 @@ const renderTasks = (selectedList) => {
     const deleteTask = document.createElement('p');
     deleteTask.innerHTML = '<i class="far fa-trash-alt"></i>';
     deleteTask.classList.add('removetask');
-
-
     const editButton = document.createElement('p');
     editButton.innerHTML = '<i class="far fa-edit"></i>';
     editButton.classList.add('edit');
     // eslint-disable-next-line no-use-before-define
     editButton.addEventListener('click', () => editTask(task, label));
+    // eslint-disable-next-line no-use-before-define
+    deleteTask.addEventListener('click', () => removeTask(task));
     const todoTask = taskElement.querySelector('.task');
     todoTask.append(deleteTask);
     todoTask.append(editButton);
@@ -228,11 +228,23 @@ newTaskForm.addEventListener('submit', (e) => {
   renderAndSave();
 });
 
+function removeTask(task) {
+  const selectedList = lists.find((list) => list.id === selectedListId);
+  const taskElement = document.importNode(taskTemplate.content, true);
+  const checkbox = taskElement.querySelector('input');
+  checkbox.id = task.id;
+  checkbox.checked = task.complete;
+  task.complete = true;
+  selectedList.tasks = selectedList.tasks.filter((task) => !task.complete);
+  renderAndSave();
+}
+
 clearCompleteTasksButton.addEventListener('click', () => {
   const selectedList = lists.find((list) => list.id === selectedListId);
   selectedList.tasks = selectedList.tasks.filter((task) => !task.complete);
   renderAndSave();
 });
+
 
 tasksContainer.addEventListener('click', (e) => {
   if (e.target.tagName.toLowerCase() === 'input') {
