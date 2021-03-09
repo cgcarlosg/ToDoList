@@ -123,12 +123,18 @@ const renderTasks = (selectedList) => {
 
     const lineBreak = document.createElement('br');
     label.append(task.name, ', ', task.date, lineBreak, task.description);
+    const deleteTask = document.createElement('p');
+    deleteTask.innerHTML = '<i class="far fa-trash-alt"></i>';
+    deleteTask.classList.add('removetask');
+
+
     const editButton = document.createElement('p');
     editButton.innerHTML = '<i class="far fa-edit"></i>';
     editButton.classList.add('edit');
     // eslint-disable-next-line no-use-before-define
     editButton.addEventListener('click', () => editTask(task, label));
     const todoTask = taskElement.querySelector('.task');
+    todoTask.append(deleteTask);
     todoTask.append(editButton);
     tasksContainer.appendChild(taskElement);
   });

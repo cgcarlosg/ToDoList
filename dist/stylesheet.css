@@ -293,6 +293,22 @@ body {
   color: var(--blue);
 }
 
+.removetask {
+  float: right;
+  font-size: 1.4rem;
+  padding: 2rem 2rem 2rem 0;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+.removetask {
+  color: black;
+}
+
+.removetask:hover {
+  color: var(--blue);
+}
+
 /* MODAL */
 #modal {
   pointer-events: none;
