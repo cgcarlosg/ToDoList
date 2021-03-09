@@ -27,7 +27,7 @@ To get a local copy up and running follow these simple example steps.
 - Clone the repo with: git clone https://github.com/cgcarlosg/ToDoList.git
 - On the terminal navigate to the project directory using cd /ToDoList
 - open the folder
-- double click index.html
+- npm run build
 - Here comes the website on the local machine.
 
 
