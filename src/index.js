@@ -30,7 +30,7 @@ const clearElement = (element) => {
     while (element.firstChild) {
       element.removeChild(element.firstChild);
     }
-  } catch(error) {
+  } catch (error) {
     element = null;
   }
 };
@@ -145,24 +145,23 @@ const renderTasks = (selectedList) => {
 };
 
 const render = () => {
-
   clearElement(listsContainer);
   renderLists();
   const selectedList = lists.find((list) => list.id === selectedListId);
-try {
-  if (selectedListId === null) {
-    listDisplayContainer.style.display = 'none';
-  } else {
-    listDisplayContainer.style.display = '';
-    listTitleElement.innerHTML = `${selectedList.name}`;
-    renderTaskCount(selectedList);
-    clearElement(tasksContainer);
-    renderTasks(selectedList);
-    colorTasks(selectedList);
+  try {
+    if (selectedListId === null) {
+      listDisplayContainer.style.display = 'none';
+    } else {
+      listDisplayContainer.style.display = '';
+      listTitleElement.innerHTML = `${selectedList.name}`;
+      renderTaskCount(selectedList);
+      clearElement(tasksContainer);
+      renderTasks(selectedList);
+      colorTasks(selectedList);
+    }
+  } catch (error) {
+    listDisplayContainer === null;
   }
-} catch(error) {
-  listDisplayContainer === null;
-}
 };
 
 const renderAndSave = () => {
@@ -170,7 +169,6 @@ const renderAndSave = () => {
   localStorage.setItem('task.lists', JSON.stringify(lists));
   localStorage.setItem('task.selectedListId', selectedListId);
 };
-
 
 const editTask = (task, label) => {
   openOrCloseUpdateTaskForm();
@@ -199,11 +197,11 @@ const createTask = () => ({
   complete: false,
 });
 
-window.onload = function(){ newListForm.addEventListener('submit', (e) => {
+window.onload = function () {
+  newListForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const listName = newListInput.value;
-    if (listName === null || listName === '')
-      return;
+    if (listName === null || listName === '') { return; }
     const list = createList();
     newListInput.value = null;
     lists.push(list);
@@ -222,25 +220,25 @@ window.addEventListener('DOMContentLoaded', (e) => {
 
 window.addEventListener('DOMContentLoaded', (e) => {
   deleteListButton.addEventListener('click', () => {
-  lists = lists.filter((list) => list.id !== selectedListId);
-  selectedListId = null;
-  renderAndSave();
-});
+    lists = lists.filter((list) => list.id !== selectedListId);
+    selectedListId = null;
+    renderAndSave();
+  });
 });
 
 window.addEventListener('DOMContentLoaded', (e) => {
-newTaskForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const taskName = newTaskInput.value;
-  const h2 = document.querySelector('.container h2');
-  if (h2.textContent === 'Update Task') return;
-  if (taskName === null || taskName === '') return;
-  const task = createTask();
-  newTaskInput.value = null;
-  const selectedList = lists.find((list) => list.id === selectedListId);
-  selectedList.tasks.push(task);
-  renderAndSave();
-});
+  newTaskForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const taskName = newTaskInput.value;
+    const h2 = document.querySelector('.container h2');
+    if (h2.textContent === 'Update Task') return;
+    if (taskName === null || taskName === '') return;
+    const task = createTask();
+    newTaskInput.value = null;
+    const selectedList = lists.find((list) => list.id === selectedListId);
+    selectedList.tasks.push(task);
+    renderAndSave();
+  });
 });
 
 const removeTask = (task) => {
@@ -252,42 +250,42 @@ const removeTask = (task) => {
   task.complete = true;
   selectedList.tasks = selectedList.tasks.filter((task) => !task.complete);
   renderAndSave();
-}
+};
 
 window.addEventListener('DOMContentLoaded', (e) => {
-clearCompleteTasksButton.addEventListener('click', () => {
-  const selectedList = lists.find((list) => list.id === selectedListId);
-  selectedList.tasks = selectedList.tasks.filter((task) => !task.complete);
-  renderAndSave();
-});
-});
-
-window.addEventListener('DOMContentLoaded', (e) => {
-tasksContainer.addEventListener('click', (e) => {
-  if (e.target.tagName.toLowerCase() === 'input') {
+  clearCompleteTasksButton.addEventListener('click', () => {
     const selectedList = lists.find((list) => list.id === selectedListId);
-    const selectedTask = selectedList.tasks.find(
-      (task) => task.id === e.target.id,
-    );
-    selectedTask.complete = e.target.checked;
+    selectedList.tasks = selectedList.tasks.filter((task) => !task.complete);
     renderAndSave();
-  }
-});
+  });
 });
 
 window.addEventListener('DOMContentLoaded', (e) => {
-addButton.addEventListener('click', () => {
-  newTaskForm.reset();
-  openOrCloseAddTaskForm();
-
-  if (modalOpen) {
-    addButton.style.background = '#2185d5';
-    addButton.style.transform = 'rotate(45deg)';
-  } else {
-    addButton.style.background = 'transparent';
-    addButton.style.transform = 'rotate(0)';
-  }
+  tasksContainer.addEventListener('click', (e) => {
+    if (e.target.tagName.toLowerCase() === 'input') {
+      const selectedList = lists.find((list) => list.id === selectedListId);
+      const selectedTask = selectedList.tasks.find(
+        (task) => task.id === e.target.id,
+      );
+      selectedTask.complete = e.target.checked;
+      renderAndSave();
+    }
+  });
 });
+
+window.addEventListener('DOMContentLoaded', (e) => {
+  addButton.addEventListener('click', () => {
+    newTaskForm.reset();
+    openOrCloseAddTaskForm();
+
+    if (modalOpen) {
+      addButton.style.background = '#2185d5';
+      addButton.style.transform = 'rotate(45deg)';
+    } else {
+      addButton.style.background = 'transparent';
+      addButton.style.transform = 'rotate(0)';
+    }
+  });
 });
 
 const closeModal = () => {
@@ -297,21 +295,21 @@ const closeModal = () => {
 };
 
 window.addEventListener('DOMContentLoaded', (e) => {
-closeButton.addEventListener('click', () => {
-  closeModal();
-  addButton.style.background = 'transparent';
-  addButton.style.transform = 'rotate(0)';
-});
+  closeButton.addEventListener('click', () => {
+    closeModal();
+    addButton.style.background = 'transparent';
+    addButton.style.transform = 'rotate(0)';
+  });
 });
 
 window.addEventListener('DOMContentLoaded', (e) => {
-formContainer.addEventListener('submit', (e) => {
-  e.preventDefault();
-  openOrCloseAddTaskForm();
-  addButton.style.background = 'transparent';
-  addButton.style.transform = 'rotate(0)';
-  modalOpen = false;
-});
+  formContainer.addEventListener('submit', (e) => {
+    e.preventDefault();
+    openOrCloseAddTaskForm();
+    addButton.style.background = 'transparent';
+    addButton.style.transform = 'rotate(0)';
+    modalOpen = false;
+  });
 });
 
 render();
