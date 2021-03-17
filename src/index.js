@@ -3,10 +3,10 @@ const newListForm = document.querySelector('[data-new-list-form]');
 const newListInput = document.querySelector('[data-new-list-input]');
 const deleteListButton = document.querySelector('[data-delete-list-button]');
 const listDisplayContainer = document.querySelector('[data-list-display-container]');
-const listTitleElement = document.querySelector('[data-list-title');
-const listCountElement = document.querySelector('[data-list-count');
+const listTitleElement = document.querySelector('[data-list-title]');
+const listCountElement = document.querySelector('[data-list-count]');
 
-const tasksContainer = document.querySelector('[data-tasks');
+const tasksContainer = document.querySelector('[data-tasks]');
 const taskTemplate = document.querySelector('#task-template');
 const newTaskForm = document.querySelector('[data-new-task-form]');
 const newTaskInput = document.querySelector('[data-new-task-input]');
@@ -26,8 +26,12 @@ let modalOpen = false;
 // localStorage.clear();
 
 const clearElement = (element) => {
-  while (element.firstChild) {
-    element.removeChild(element.firstChild);
+  try {
+    while (element.firstChild) {
+      element.removeChild(element.firstChild);
+    }
+  } catch (error) {
+    element = null;
   }
 };
 
@@ -144,16 +148,20 @@ const render = () => {
   clearElement(listsContainer);
   renderLists();
   const selectedList = lists.find((list) => list.id === selectedListId);
-
-  if (selectedListId === null) {
-    listDisplayContainer.style.display = 'none';
-  } else {
-    listDisplayContainer.style.display = '';
-    listTitleElement.innerHTML = `${selectedList.name}`;
-    renderTaskCount(selectedList);
-    clearElement(tasksContainer);
-    renderTasks(selectedList);
-    colorTasks(selectedList);
+  try {
+    if (selectedListId === null) {
+      listDisplayContainer.style.display = 'none';
+    } else {
+      listDisplayContainer.style.display = '';
+      listTitleElement.innerHTML = `${selectedList.name}`;
+      renderTaskCount(selectedList);
+      clearElement(tasksContainer);
+      renderTasks(selectedList);
+      colorTasks(selectedList);
+    }
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.log(listDisplayContainer === null);
   }
 };
 
@@ -162,7 +170,6 @@ const renderAndSave = () => {
   localStorage.setItem('task.lists', JSON.stringify(lists));
   localStorage.setItem('task.selectedListId', selectedListId);
 };
-
 
 const editTask = (task, label) => {
   openOrCloseUpdateTaskForm();
@@ -182,7 +189,6 @@ const editTask = (task, label) => {
 
 const createList = () => ({ id: Date.now().toString(), name: newListInput.value, tasks: [] });
 
-
 const createTask = () => ({
   id: Date.now().toString(),
   name: newTaskInput.value,
@@ -192,43 +198,51 @@ const createTask = () => ({
   complete: false,
 });
 
-newListForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const listName = newListInput.value;
-  if (listName === null || listName === '') return;
-  const list = createList();
-  newListInput.value = null;
-  lists.push(list);
-  renderAndSave();
-});
-
-listsContainer.addEventListener('click', (e) => {
-  if (e.target.tagName.toLowerCase() === 'li') {
-    selectedListId = e.target.dataset.listId;
+window.onload = () => {
+  newListForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const listName = newListInput.value;
+    if (listName === null || listName === '') { return; }
+    const list = createList();
+    newListInput.value = null;
+    lists.push(list);
     renderAndSave();
-  }
+  });
+};
+
+window.addEventListener('DOMContentLoaded', () => {
+  listsContainer.addEventListener('click', (e) => {
+    if (e.target.tagName.toLowerCase() === 'li') {
+      selectedListId = e.target.dataset.listId;
+      renderAndSave();
+    }
+  });
 });
 
-deleteListButton.addEventListener('click', () => {
-  lists = lists.filter((list) => list.id !== selectedListId);
-  selectedListId = null;
-  renderAndSave();
+window.addEventListener('DOMContentLoaded', () => {
+  deleteListButton.addEventListener('click', () => {
+    lists = lists.filter((list) => list.id !== selectedListId);
+    selectedListId = null;
+    renderAndSave();
+  });
 });
 
-newTaskForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const taskName = newTaskInput.value;
-  const h2 = document.querySelector('.container h2');
-  if (h2.textContent === 'Update Task') return;
-  if (taskName === null || taskName === '') return;
-  const task = createTask();
-  newTaskInput.value = null;
-  const selectedList = lists.find((list) => list.id === selectedListId);
-  selectedList.tasks.push(task);
-  renderAndSave();
+window.addEventListener('DOMContentLoaded', () => {
+  newTaskForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const taskName = newTaskInput.value;
+    const h2 = document.querySelector('.container h2');
+    if (h2.textContent === 'Update Task') return;
+    if (taskName === null || taskName === '') return;
+    const task = createTask();
+    newTaskInput.value = null;
+    const selectedList = lists.find((list) => list.id === selectedListId);
+    selectedList.tasks.push(task);
+    renderAndSave();
+  });
 });
 
-function removeTask(task) {
+const removeTask = (task) => {
   const selectedList = lists.find((list) => list.id === selectedListId);
   const taskElement = document.importNode(taskTemplate.content, true);
   const checkbox = taskElement.querySelector('input');
@@ -237,37 +251,42 @@ function removeTask(task) {
   task.complete = true;
   selectedList.tasks = selectedList.tasks.filter((task) => !task.complete);
   renderAndSave();
-}
+};
 
-clearCompleteTasksButton.addEventListener('click', () => {
-  const selectedList = lists.find((list) => list.id === selectedListId);
-  selectedList.tasks = selectedList.tasks.filter((task) => !task.complete);
-  renderAndSave();
-});
-
-
-tasksContainer.addEventListener('click', (e) => {
-  if (e.target.tagName.toLowerCase() === 'input') {
+window.addEventListener('DOMContentLoaded', () => {
+  clearCompleteTasksButton.addEventListener('click', () => {
     const selectedList = lists.find((list) => list.id === selectedListId);
-    const selectedTask = selectedList.tasks.find(
-      (task) => task.id === e.target.id,
-    );
-    selectedTask.complete = e.target.checked;
+    selectedList.tasks = selectedList.tasks.filter((task) => !task.complete);
     renderAndSave();
-  }
+  });
 });
 
-addButton.addEventListener('click', () => {
-  newTaskForm.reset();
-  openOrCloseAddTaskForm();
+window.addEventListener('DOMContentLoaded', () => {
+  tasksContainer.addEventListener('click', (e) => {
+    if (e.target.tagName.toLowerCase() === 'input') {
+      const selectedList = lists.find((list) => list.id === selectedListId);
+      const selectedTask = selectedList.tasks.find(
+        (task) => task.id === e.target.id,
+      );
+      selectedTask.complete = e.target.checked;
+      renderAndSave();
+    }
+  });
+});
 
-  if (modalOpen) {
-    addButton.style.background = '#2185d5';
-    addButton.style.transform = 'rotate(45deg)';
-  } else {
-    addButton.style.background = 'transparent';
-    addButton.style.transform = 'rotate(0)';
-  }
+window.addEventListener('DOMContentLoaded', () => {
+  addButton.addEventListener('click', () => {
+    newTaskForm.reset();
+    openOrCloseAddTaskForm();
+
+    if (modalOpen) {
+      addButton.style.background = '#2185d5';
+      addButton.style.transform = 'rotate(45deg)';
+    } else {
+      addButton.style.background = 'transparent';
+      addButton.style.transform = 'rotate(0)';
+    }
+  });
 });
 
 const closeModal = () => {
@@ -276,29 +295,38 @@ const closeModal = () => {
   modalOpen = false;
 };
 
-closeButton.addEventListener('click', () => {
-  closeModal();
-  addButton.style.background = 'transparent';
-  addButton.style.transform = 'rotate(0)';
+window.addEventListener('DOMContentLoaded', () => {
+  closeButton.addEventListener('click', () => {
+    closeModal();
+    addButton.style.background = 'transparent';
+    addButton.style.transform = 'rotate(0)';
+  });
 });
 
-formContainer.addEventListener('submit', (e) => {
-  e.preventDefault();
-  openOrCloseAddTaskForm();
-  addButton.style.background = 'transparent';
-  addButton.style.transform = 'rotate(0)';
-  modalOpen = false;
+window.addEventListener('DOMContentLoaded', () => {
+  formContainer.addEventListener('submit', (e) => {
+    e.preventDefault();
+    openOrCloseAddTaskForm();
+    addButton.style.background = 'transparent';
+    addButton.style.transform = 'rotate(0)';
+    modalOpen = false;
+  });
 });
 
 render();
 
 export {
-  clearElement,
-  listsContainer,
   renderLists,
-  listDisplayContainer,
-  listTitleElement,
-  tasksContainer,
-  taskTemplate,
+  renderTaskCount,
+  colorTasks,
+  openOrCloseAddTaskForm,
+  openOrCloseUpdateTaskForm,
+  renderTasks,
+  render,
+  renderAndSave,
   editTask,
+  createList,
+  createTask,
+  removeTask,
+  closeModal,
 };
