@@ -209,7 +209,7 @@ window.onload = function () {
   });
 };
 
-window.addEventListener('DOMContentLoaded', (e) => {
+window.addEventListener('DOMContentLoaded', () => {
   listsContainer.addEventListener('click', (e) => {
     if (e.target.tagName.toLowerCase() === 'li') {
       selectedListId = e.target.dataset.listId;
@@ -218,7 +218,7 @@ window.addEventListener('DOMContentLoaded', (e) => {
   });
 });
 
-window.addEventListener('DOMContentLoaded', (e) => {
+window.addEventListener('DOMContentLoaded', () => {
   deleteListButton.addEventListener('click', () => {
     lists = lists.filter((list) => list.id !== selectedListId);
     selectedListId = null;
@@ -226,7 +226,7 @@ window.addEventListener('DOMContentLoaded', (e) => {
   });
 });
 
-window.addEventListener('DOMContentLoaded', (e) => {
+window.addEventListener('DOMContentLoaded', () => {
   newTaskForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const taskName = newTaskInput.value;
@@ -252,7 +252,7 @@ const removeTask = (task) => {
   renderAndSave();
 };
 
-window.addEventListener('DOMContentLoaded', (e) => {
+window.addEventListener('DOMContentLoaded', () => {
   clearCompleteTasksButton.addEventListener('click', () => {
     const selectedList = lists.find((list) => list.id === selectedListId);
     selectedList.tasks = selectedList.tasks.filter((task) => !task.complete);
@@ -260,7 +260,7 @@ window.addEventListener('DOMContentLoaded', (e) => {
   });
 });
 
-window.addEventListener('DOMContentLoaded', (e) => {
+window.addEventListener('DOMContentLoaded', () => {
   tasksContainer.addEventListener('click', (e) => {
     if (e.target.tagName.toLowerCase() === 'input') {
       const selectedList = lists.find((list) => list.id === selectedListId);
@@ -273,7 +273,7 @@ window.addEventListener('DOMContentLoaded', (e) => {
   });
 });
 
-window.addEventListener('DOMContentLoaded', (e) => {
+window.addEventListener('DOMContentLoaded', () => {
   addButton.addEventListener('click', () => {
     newTaskForm.reset();
     openOrCloseAddTaskForm();
@@ -294,7 +294,7 @@ const closeModal = () => {
   modalOpen = false;
 };
 
-window.addEventListener('DOMContentLoaded', (e) => {
+window.addEventListener('DOMContentLoaded', () => {
   closeButton.addEventListener('click', () => {
     closeModal();
     addButton.style.background = 'transparent';
@@ -302,7 +302,7 @@ window.addEventListener('DOMContentLoaded', (e) => {
   });
 });
 
-window.addEventListener('DOMContentLoaded', (e) => {
+window.addEventListener('DOMContentLoaded', () => {
   formContainer.addEventListener('submit', (e) => {
     e.preventDefault();
     openOrCloseAddTaskForm();
