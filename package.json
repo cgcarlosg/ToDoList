@@ -26,7 +26,16 @@
   },
   "homepage": "https://github.com/cgcarlosg/ToDoList#readme",
   "devDependencies": {
+    "@babel/cli": "^7.13.10",
+    "@babel/core": "^7.13.10",
+    "@babel/plugin-syntax-jsx": "^7.12.13",
+    "@babel/preset-env": "^7.13.10",
+    "babel-loader": "^8.2.2",
+    "jest": "^26.6.3",
     "webpack": "^5.24.2",
     "webpack-cli": "^4.5.0"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.12.1"
   }
 }

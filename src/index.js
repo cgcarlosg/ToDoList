@@ -3,10 +3,10 @@ const newListForm = document.querySelector('[data-new-list-form]');
 const newListInput = document.querySelector('[data-new-list-input]');
 const deleteListButton = document.querySelector('[data-delete-list-button]');
 const listDisplayContainer = document.querySelector('[data-list-display-container]');
-const listTitleElement = document.querySelector('[data-list-title');
-const listCountElement = document.querySelector('[data-list-count');
+const listTitleElement = document.querySelector('[data-list-title]');
+const listCountElement = document.querySelector('[data-list-count]');
 
-const tasksContainer = document.querySelector('[data-tasks');
+const tasksContainer = document.querySelector('[data-tasks]');
 const taskTemplate = document.querySelector('#task-template');
 const newTaskForm = document.querySelector('[data-new-task-form]');
 const newTaskInput = document.querySelector('[data-new-task-input]');
@@ -26,8 +26,12 @@ let modalOpen = false;
 // localStorage.clear();
 
 const clearElement = (element) => {
-  while (element.firstChild) {
-    element.removeChild(element.firstChild);
+  try {
+    while (element.firstChild) {
+      element.removeChild(element.firstChild);
+    }
+  } catch(error) {
+    element = null;
   }
 };
 
@@ -141,10 +145,11 @@ const renderTasks = (selectedList) => {
 };
 
 const render = () => {
+
   clearElement(listsContainer);
   renderLists();
   const selectedList = lists.find((list) => list.id === selectedListId);
-
+try {
   if (selectedListId === null) {
     listDisplayContainer.style.display = 'none';
   } else {
@@ -155,6 +160,9 @@ const render = () => {
     renderTasks(selectedList);
     colorTasks(selectedList);
   }
+} catch(error) {
+  listDisplayContainer === null;
+}
 };
 
 const renderAndSave = () => {
@@ -182,7 +190,6 @@ const editTask = (task, label) => {
 
 const createList = () => ({ id: Date.now().toString(), name: newListInput.value, tasks: [] });
 
-
 const createTask = () => ({
   id: Date.now().toString(),
   name: newTaskInput.value,
@@ -192,29 +199,36 @@ const createTask = () => ({
   complete: false,
 });
 
-newListForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const listName = newListInput.value;
-  if (listName === null || listName === '') return;
-  const list = createList();
-  newListInput.value = null;
-  lists.push(list);
-  renderAndSave();
-});
-
-listsContainer.addEventListener('click', (e) => {
-  if (e.target.tagName.toLowerCase() === 'li') {
-    selectedListId = e.target.dataset.listId;
+window.onload = function(){ newListForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const listName = newListInput.value;
+    if (listName === null || listName === '')
+      return;
+    const list = createList();
+    newListInput.value = null;
+    lists.push(list);
     renderAndSave();
-  }
+  });
+};
+
+window.addEventListener('DOMContentLoaded', (e) => {
+  listsContainer.addEventListener('click', (e) => {
+    if (e.target.tagName.toLowerCase() === 'li') {
+      selectedListId = e.target.dataset.listId;
+      renderAndSave();
+    }
+  });
 });
 
-deleteListButton.addEventListener('click', () => {
+window.addEventListener('DOMContentLoaded', (e) => {
+  deleteListButton.addEventListener('click', () => {
   lists = lists.filter((list) => list.id !== selectedListId);
   selectedListId = null;
   renderAndSave();
 });
+});
 
+window.addEventListener('DOMContentLoaded', (e) => {
 newTaskForm.addEventListener('submit', (e) => {
   e.preventDefault();
   const taskName = newTaskInput.value;
@@ -227,8 +241,9 @@ newTaskForm.addEventListener('submit', (e) => {
   selectedList.tasks.push(task);
   renderAndSave();
 });
+});
 
-function removeTask(task) {
+const removeTask = (task) => {
   const selectedList = lists.find((list) => list.id === selectedListId);
   const taskElement = document.importNode(taskTemplate.content, true);
   const checkbox = taskElement.querySelector('input');
@@ -239,13 +254,15 @@ function removeTask(task) {
   renderAndSave();
 }
 
+window.addEventListener('DOMContentLoaded', (e) => {
 clearCompleteTasksButton.addEventListener('click', () => {
   const selectedList = lists.find((list) => list.id === selectedListId);
   selectedList.tasks = selectedList.tasks.filter((task) => !task.complete);
   renderAndSave();
 });
+});
 
-
+window.addEventListener('DOMContentLoaded', (e) => {
 tasksContainer.addEventListener('click', (e) => {
   if (e.target.tagName.toLowerCase() === 'input') {
     const selectedList = lists.find((list) => list.id === selectedListId);
@@ -256,7 +273,9 @@ tasksContainer.addEventListener('click', (e) => {
     renderAndSave();
   }
 });
+});
 
+window.addEventListener('DOMContentLoaded', (e) => {
 addButton.addEventListener('click', () => {
   newTaskForm.reset();
   openOrCloseAddTaskForm();
@@ -269,6 +288,7 @@ addButton.addEventListener('click', () => {
     addButton.style.transform = 'rotate(0)';
   }
 });
+});
 
 const closeModal = () => {
   formContainer.style.transform = 'scale(0)';
@@ -276,12 +296,15 @@ const closeModal = () => {
   modalOpen = false;
 };
 
+window.addEventListener('DOMContentLoaded', (e) => {
 closeButton.addEventListener('click', () => {
   closeModal();
   addButton.style.background = 'transparent';
   addButton.style.transform = 'rotate(0)';
 });
+});
 
+window.addEventListener('DOMContentLoaded', (e) => {
 formContainer.addEventListener('submit', (e) => {
   e.preventDefault();
   openOrCloseAddTaskForm();
@@ -289,16 +312,22 @@ formContainer.addEventListener('submit', (e) => {
   addButton.style.transform = 'rotate(0)';
   modalOpen = false;
 });
+});
 
 render();
 
 export {
-  clearElement,
-  listsContainer,
   renderLists,
-  listDisplayContainer,
-  listTitleElement,
-  tasksContainer,
-  taskTemplate,
+  renderTaskCount,
+  colorTasks,
+  openOrCloseAddTaskForm,
+  openOrCloseUpdateTaskForm,
+  renderTasks,
+  render,
+  renderAndSave,
   editTask,
+  createList,
+  createTask,
+  removeTask,
+  closeModal,
 };
