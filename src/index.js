@@ -160,7 +160,8 @@ const render = () => {
       colorTasks(selectedList);
     }
   } catch (error) {
-    listDisplayContainer === null;
+    // eslint-disable-next-line no-console
+    console.log(listDisplayContainer === null);
   }
 };
 
@@ -197,7 +198,7 @@ const createTask = () => ({
   complete: false,
 });
 
-window.onload = function () {
+window.onload = () => {
   newListForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const listName = newListInput.value;

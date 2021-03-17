@@ -12,7 +12,7 @@ import {
   createTask,
   removeTask,
   closeModal,
-} from './index.js';
+} from './index';
 
 describe('createList', () => {
   test('should return a function', () => {
