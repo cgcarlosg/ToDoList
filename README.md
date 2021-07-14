@@ -6,6 +6,7 @@
 
 - Webpack
 - VS Code
+- CSS
 - JavaScript
 
 ## Demo Screenshots
